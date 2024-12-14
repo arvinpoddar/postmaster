@@ -1,6 +1,6 @@
 {
   "name": "postmaster",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "postmaster - core settings",
   "type": "module",
   "scripts": {

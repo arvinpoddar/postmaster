@@ -1,6 +1,6 @@
 {
   "name": "@extension/storage",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "postmaster - storage",
   "private": true,
   "sideEffects": false,
