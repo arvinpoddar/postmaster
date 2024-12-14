@@ -29,7 +29,7 @@ export function RegexFilter({
   );
 
   return (
-    <div className="flex w-full flex-1 items-center gap-1 rounded border border-zinc-600 dark:bg-zinc-700 dark:text-gray-300 dark:focus-within:border-blue-400">
+    <div className="flex w-full flex-1 items-center gap-1 rounded border border-zinc-400 bg-zinc-200 text-zinc-700 focus-within:border-blue-500 dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-300 dark:focus-within:border-blue-400">
       <input
         {...props}
         className="ml-1 flex-1 bg-transparent outline-none dark:bg-transparent"
@@ -46,7 +46,10 @@ export function RegexFilter({
             setMatchCase(v => !v);
           }}
           title="Case sensitive"
-          className={cn('rounded p-[2px]  dark:hover:bg-zinc-600', matchCase && 'dark:bg-zinc-600 dark:text-blue-400')}>
+          className={cn(
+            'rounded p-[2px] hover:bg-zinc-300 dark:hover:bg-zinc-600',
+            matchCase && 'bg-zinc-300 dark:bg-zinc-600 text-blue-500 dark:text-blue-400',
+          )}>
           <CaseSensitiveIcon size={14} />
         </button>
         <button
@@ -55,7 +58,10 @@ export function RegexFilter({
             setMatchRegex(v => !v);
           }}
           title="Use RegEx"
-          className={cn('rounded p-[2px] dark:hover:bg-zinc-600', matchRegex && 'dark:bg-zinc-600 dark:text-blue-400')}>
+          className={cn(
+            'rounded p-[2px] hover:bg-zinc-300 dark:hover:bg-zinc-600',
+            matchRegex && 'bg-zinc-300 dark:bg-zinc-600 text-blue-500 dark:text-blue-400',
+          )}>
           <RegexIcon size={14} />
         </button>
       </div>
