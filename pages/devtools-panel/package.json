@@ -1,0 +1,41 @@
+{
+  "name": "@extension/devtools-panel",
+  "version": "0.3.4",
+  "description": "Postmaster - devtools panel",
+  "private": true,
+  "sideEffects": true,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "clean:node_modules": "pnpx rimraf node_modules",
+    "clean:turbo": "rimraf .turbo",
+    "clean": "pnpm clean:turbo && pnpm clean:node_modules",
+    "build": "vite build",
+    "dev": "cross-env __DEV__=true vite build --mode development",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@extension/shared": "workspace:*",
+    "@extension/storage": "workspace:*",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {
+    "@extension/tailwindcss-config": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "@extension/vite-config": "workspace:*",
+    "cross-env": "^7.0.3",
+    "postcss-load-config": "^6.0.1"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
+  }
+}
