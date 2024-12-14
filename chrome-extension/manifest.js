@@ -21,7 +21,7 @@ const manifest = deepmerge(
     version: packageJson.version,
     description: 'A postMessage debugging panel',
     host_permissions: ['<all_urls>'],
-    permissions: ['scripting', 'tabs'],
+    permissions: ['scripting'],
     background: {
       service_worker: 'background.iife.js',
       type: 'module',
