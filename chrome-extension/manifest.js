@@ -19,7 +19,7 @@ const manifest = deepmerge(
      */
     name: 'Postmaster',
     version: packageJson.version,
-    description: 'A postMessage debugging panel',
+    description: 'An advanced postMessage devtools panel for Chrome',
     host_permissions: ['<all_urls>'],
     permissions: ['scripting'],
     background: {

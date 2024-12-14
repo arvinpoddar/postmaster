@@ -1,7 +1,7 @@
 {
   "name": "postmaster",
   "version": "0.1.2",
-  "description": "A postMessage debug panel for Chrome",
+  "description": "An advanced postMessage devtools panel for Chrome",
   "license": "MIT",
   "repository": {
     "type": "git",
