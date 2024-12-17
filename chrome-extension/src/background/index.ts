@@ -33,12 +33,23 @@ chrome.runtime.onConnect.addListener(devToolsConnection => {
             }
           }
 
-          function handlePostMessage(event: MessageEvent) {
+          function handlePostMessage(event: MessageEvent, meta?: { origin: string }) {
             if (!isValidChromeRuntime()) return;
+
+            if (event.data instanceof MessagePort) {
+              event.data.addEventListener('message', m =>
+                handlePostMessage(m, {
+                  origin: `${event.origin} (MessagePort)`,
+                }),
+              );
+            }
+
+            const messageData = event.data instanceof MessagePort ? '[MessagePort]' : event.data;
+
             chrome.runtime.sendMessage({
-              origin: event.origin,
+              origin: (event.origin || meta?.origin) ?? 'Unknown',
               destination: window.location.href,
-              data: event.data,
+              data: messageData,
               timestamp: event.timeStamp,
               datetime: Date.now(),
             });
