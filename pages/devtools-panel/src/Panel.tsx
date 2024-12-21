@@ -170,9 +170,9 @@ function Panel({ messages, paused, onClear, onTogglePause, onFilterFunctionChang
         <RegexFilter
           className="border-t"
           onFilterChange={filter => onFilterFunctionChange(filter)}
-          originPlaceholder="Filter by origin"
-          destinationPlaceholder="Filter by destination"
-          dataPlaceholder="Filter by data"
+          originPlaceholder="Block by origin"
+          destinationPlaceholder="Block by destination"
+          dataPlaceholder="Block by data"
         />
       )}
     </div>
