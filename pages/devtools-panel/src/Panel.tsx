@@ -125,13 +125,13 @@ function Panel({ messages, paused, onClear, onTogglePause, onFilterFunctionChang
         </div>
       </div>
 
-      {showFilters && (
+      {showSearchFilters && (
         <RegexFilter
           className="border-b"
-          onFilterChange={filter => onFilterFunctionChange(filter)}
-          originPlaceholder="Filter by origin"
-          destinationPlaceholder="Filter by destination"
-          dataPlaceholder="Filter by data"
+          onFilterChange={filter => setSearchFunction(() => filter)}
+          originPlaceholder="Search by origin"
+          destinationPlaceholder="Search by destination"
+          dataPlaceholder="Search by data"
         />
       )}
 
@@ -166,13 +166,13 @@ function Panel({ messages, paused, onClear, onTogglePause, onFilterFunctionChang
         )}
       </div>
 
-      {showSearchFilters && (
+      {showFilters && (
         <RegexFilter
           className="border-t"
-          onFilterChange={filter => setSearchFunction(() => filter)}
-          originPlaceholder="Search by origin"
-          destinationPlaceholder="Search by destination"
-          dataPlaceholder="Search by data"
+          onFilterChange={filter => onFilterFunctionChange(filter)}
+          originPlaceholder="Filter by origin"
+          destinationPlaceholder="Filter by destination"
+          dataPlaceholder="Filter by data"
         />
       )}
     </div>
