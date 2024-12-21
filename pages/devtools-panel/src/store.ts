@@ -1,4 +1,5 @@
 import { parseMessage, type PostMessage } from '@extension/shared';
+import type { FilterFunction } from './components/RegexFilter';
 
 type StoreState = {
   messages: PostMessage[];
@@ -8,11 +9,16 @@ type StoreState = {
 export function createStore(connection: chrome.runtime.Port, { maxMessages = 1000 } = {}) {
   let listeners: (() => void)[] = [];
   let currentState: StoreState = { messages: [], paused: false };
+  let filterFunction: FilterFunction | null = null;
 
   function handleMessage(message: unknown) {
     if (currentState.paused) return;
+
     const parsedMessage = parseMessage(message);
     if (parsedMessage == null) return;
+
+    if (filterFunction != null && filterFunction(parsedMessage)) return;
+
     if (currentState.messages.length >= maxMessages) {
       currentState.messages.shift();
     }
@@ -31,6 +37,12 @@ export function createStore(connection: chrome.runtime.Port, { maxMessages = 100
 
   function getSnapshot(): StoreState {
     return currentState;
+  }
+
+  function setFilterFunction(fn: FilterFunction | null): void {
+    if (filterFunction === fn) return;
+    filterFunction = fn;
+    listeners.forEach(listener => listener());
   }
 
   function togglePause(): void {
@@ -60,5 +72,6 @@ export function createStore(connection: chrome.runtime.Port, { maxMessages = 100
     getSnapshot,
     togglePause,
     clearMessages,
+    setFilterFunction,
   };
 }

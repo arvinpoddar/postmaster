@@ -16,6 +16,7 @@ function Root() {
       onClear={() => store.clearMessages()}
       paused={paused}
       onTogglePause={() => store.togglePause()}
+      onFilterFunctionChange={filterFunction => store.setFilterFunction(filterFunction)}
     />
   );
 }
