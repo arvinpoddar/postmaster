@@ -9,7 +9,7 @@
     },
     "dev": {
       "dependsOn": ["ready"],
-      "outputs": ["dist/**", "build/**", "i18n/locales/**"],
+      "outputs": ["dist/**", "build/**"],
       "cache": false,
       "persistent": true
     },
